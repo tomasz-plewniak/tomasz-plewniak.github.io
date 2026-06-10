@@ -321,13 +321,29 @@ a:hover {
 }
 
 .skill-card {
+    position: relative;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     padding: 1.5rem;
+    overflow: hidden;
     transition: all var(--transition);
     opacity: 0;
     transform: translateY(20px);
+}
+
+/* Accent bar that sweeps in along the top edge on hover */
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition);
 }
 
 .skill-card.visible {
@@ -337,16 +353,31 @@ a:hover {
 
 .skill-card:hover {
     border-color: var(--color-border-hover);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    transform: translateY(-4px);
+}
+
+.skill-card:hover::before {
+    transform: scaleX(1);
 }
 
 .skill-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
     font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-accent);
     margin-bottom: 1rem;
+}
+
+.skill-card h3 svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    opacity: 0.9;
 }
 
 .skill-tags {
