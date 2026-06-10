@@ -40,8 +40,24 @@
 </script>
 <body>
 
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#top" class="nav-brand">TP</a>
+            <div class="nav-links">
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+            </div>
+            <a href="Tomasz_Plewniak_Resume_ENG.pdf" target="_blank" rel="noopener" class="nav-resume">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Resume
+            </a>
+        </div>
+    </nav>
+
     <!-- Hero -->
-    <header class="hero">
+    <header class="hero" id="top">
         <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="hero-badge">Senior Software Engineer</div>
@@ -333,6 +349,11 @@
         <p class="copyright"></p>
     </footer>
 
+    <!-- Back to top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    </button>
+
     <script>
         // Copyright year
         document.querySelector('.copyright').textContent =
@@ -350,6 +371,35 @@
         document.querySelectorAll('.section, .timeline-item, .education-card, .skill-card').forEach(el => {
             observer.observe(el);
         });
+
+        // Nav: condensed state + back-to-top visibility on scroll
+        const nav = document.getElementById('nav');
+        const backToTop = document.getElementById('backToTop');
+        const onScroll = () => {
+            const y = window.scrollY;
+            nav.classList.toggle('scrolled', y > 40);
+            backToTop.classList.toggle('visible', y > 600);
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Scroll-spy: highlight active nav link
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = [...navLinks].map(a => document.querySelector(a.getAttribute('href')));
+        const spy = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(a =>
+                        a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+                }
+            });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        sections.forEach(s => s && spy.observe(s));
 
         // Copy protection
         document.addEventListener('copy', e => e.preventDefault());
