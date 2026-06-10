@@ -143,31 +143,6 @@ a:hover {
     color: var(--color-accent);
 }
 
-.nav-resume {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--color-accent);
-    background: var(--color-accent-glow);
-    border: 1px solid rgba(129, 140, 248, 0.2);
-    padding: 0.45rem 0.9rem;
-    border-radius: 100px;
-    transition: all var(--transition);
-}
-
-.nav-resume:hover {
-    background: var(--color-accent-glow-strong);
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-    transform: translateY(-1px);
-}
-
-.nav-resume svg {
-    opacity: 0.85;
-}
-
 /* Offset anchor targets so the fixed nav doesn't cover headings */
 [id] {
     scroll-margin-top: 5rem;
