@@ -10,7 +10,7 @@
     --color-border-hover: rgba(255, 255, 255, 0.12);
     --color-text: #e4e4e7;
     --color-text-muted: #a1a1aa;
-    --color-text-dim: #71717a;
+    --color-text-dim: #8b8b94;
     --color-accent: #818cf8;
     --color-accent-2: #a78bfa;
     --color-accent-glow: rgba(129, 140, 248, 0.15);
@@ -42,23 +42,6 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-}
-
-/* Copy protection */
-body {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-}
-
-::selection {
-    background: transparent;
-}
-
-::-moz-selection {
-    background: transparent;
 }
 
 a {
@@ -141,6 +124,24 @@ a:hover {
 
 .nav-links a.active {
     color: var(--color-accent);
+}
+
+.nav-resume {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    border: 1px solid rgba(129, 140, 248, 0.3);
+    background: var(--color-accent-glow);
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-xs);
+    transition: all var(--transition);
+}
+
+.nav-resume:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: var(--color-accent-glow-strong);
 }
 
 /* Offset anchor targets so the fixed nav doesn't cover headings */
@@ -858,26 +859,4 @@ a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
-}
-
-/* ==========================================================================
-   Print – blocked
-   ========================================================================== */
-
-@media print {
-    body::before {
-        content: 'Printing is disabled for this page.';
-        display: block;
-        font-size: 2rem;
-        text-align: center;
-        padding: 4rem;
-    }
-
-    body > *:not(body::before) {
-        display: none !important;
-    }
-
-    .hero, .main, .footer {
-        display: none !important;
-    }
 }
