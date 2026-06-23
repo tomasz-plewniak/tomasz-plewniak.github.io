@@ -43,10 +43,19 @@
         "jobTitle": "Lead Software Engineer",
         "description": "Lead Software Engineer with 10+ years of experience specializing in .NET, C#, and Azure backend development.",
         "email": "mailto:t_plewniak@yahoo.com",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Beqom"
+        },
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Bochnia",
+            "addressRegion": "Małopolskie",
             "addressCountry": "Poland"
+        },
+        "nationality": {
+            "@type": "Country",
+            "name": "Poland"
         },
         "sameAs": [
             "https://www.linkedin.com/in/tomasz-plewniak",
@@ -84,7 +93,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 
     <!-- Mark JS available so scroll-reveal animations only apply with JS;
          content stays visible if JS is disabled or fails to load -->
@@ -102,15 +112,22 @@
     </script>
 </head>
 <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
 
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
             <a href="#top" class="nav-brand">TP</a>
-            <div class="nav-links">
-                <a href="#skills">Skills</a>
-                <a href="#experience">Experience</a>
-                <a href="#education">Education</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <svg class="nav-toggle-icon" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                <svg class="nav-close-icon" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+            </button>
+            <div class="nav-menu" id="navMenu">
+                <div class="nav-links">
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#education">Education</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -123,6 +140,7 @@
             <h1 class="hero-name">Tomasz Plewniak</h1>
             <p class="hero-subtitle">C# & .NET &middot; Master of Engineering</p>
             <p class="hero-summary">Lead backend engineer with 10+ years building and modernizing .NET systems on Azure &mdash; from Web APIs and microservices to large-scale platform migrations. Recently led a company-wide .NET 10 migration and re-architected multi-tenant localization for a global compensation platform.</p>
+            <a href="mailto:t_plewniak@yahoo.com" class="hero-cta">Get in touch</a>
             <div class="hero-contact">
                 <a href="mailto:t_plewniak@yahoo.com" class="contact-chip">
                     <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -144,7 +162,7 @@
         </div>
     </header>
 
-    <main class="main">
+    <main class="main" id="main">
 
         <!-- Core Competencies -->
         <section class="section" id="skills">
@@ -343,7 +361,7 @@
                         <div class="job-header">
                             <div>
                                 <h3>C# Programmer</h3>
-                                <p class="company">Igloo &mdash; Stary Wi&#347;nicz, Poland</p>
+                                <p class="company">Igloo &mdash; <span lang="pl">Stary Wiśnicz</span>, Poland</p>
                             </div>
                             <time class="date-badge">May 2017 &ndash; Dec 2017</time>
                         </div>
@@ -365,6 +383,9 @@
                             <time class="date-badge">Sep 2016 &ndash; May 2017</time>
                         </div>
                         <p class="job-desc">Managed the implementation and maintenance of a new corporate e-shop using popular e-commerce frameworks. Analyzed business performance by preparing sales reports and monitoring web traffic via Google Analytics. Provided comprehensive daily IT support for internal users.</p>
+                        <div class="tech-pills">
+                            <span>E-commerce</span><span>Google Analytics</span><span>IT Support</span><span>HTML/CSS</span>
+                        </div>
                     </div>
                 </article>
 
@@ -431,6 +452,11 @@
     </main>
 
     <footer class="footer">
+        <div class="footer-links">
+            <a href="mailto:t_plewniak@yahoo.com">Email</a>
+            <a href="https://www.linkedin.com/in/tomasz-plewniak" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/tomasz-plewniak" target="_blank" rel="noopener">GitHub</a>
+        </div>
         <p class="copyright"></p>
     </footer>
 
@@ -460,6 +486,9 @@
         // Nav: condensed state + back-to-top visibility on scroll
         const nav = document.getElementById('nav');
         const backToTop = document.getElementById('backToTop');
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
         const onScroll = () => {
             const y = window.scrollY;
             nav.classList.toggle('scrolled', y > 40);
@@ -467,6 +496,25 @@
         };
         window.addEventListener('scroll', onScroll, { passive: true });
         onScroll();
+
+        // Mobile nav toggle
+        const toggleNav = (open) => {
+            const isOpen = open ?? !navMenu.classList.contains('open');
+            navMenu.classList.toggle('open', isOpen);
+            navToggle.classList.toggle('active', isOpen);
+            navToggle.setAttribute('aria-expanded', isOpen);
+        };
+        navToggle.addEventListener('click', () => toggleNav());
+        navMenu.querySelectorAll('a').forEach(link =>
+            link.addEventListener('click', () => toggleNav(false))
+        );
+        document.addEventListener('click', (e) => {
+            if (navMenu.classList.contains('open') &&
+                !navMenu.contains(e.target) &&
+                !navToggle.contains(e.target)) {
+                toggleNav(false);
+            }
+        });
 
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
