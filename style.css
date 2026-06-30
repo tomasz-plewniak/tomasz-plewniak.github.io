@@ -177,7 +177,9 @@ a:hover {
 }
 
 .nav-links a.active {
-    color: var(--color-accent);
+    color: var(--color-accent-2);
+    background: var(--color-surface);
+    text-shadow: 0 0 12px var(--color-accent-glow);
 }
 
 /* Offset anchor targets so the fixed nav doesn't cover headings */
@@ -300,8 +302,8 @@ a:hover {
 
 .hero-cta:hover {
     color: var(--color-bg);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(129, 140, 248, 0.5);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(129, 140, 248, 0.65);
 }
 
 .hero-cta:active {
@@ -548,7 +550,8 @@ a:hover {
 
 .timeline-item:hover .timeline-content {
     border-color: var(--color-border-hover);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    transform: translateY(-4px);
 }
 
 .job-header {
@@ -673,7 +676,8 @@ a:hover {
 
 .education-card:hover {
     border-color: var(--color-border-hover);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    transform: translateY(-4px);
 }
 
 .education-degree {
