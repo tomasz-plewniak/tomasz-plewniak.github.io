@@ -324,7 +324,7 @@ a:hover {
     text-decoration: none;
 }
 
-.contact-chip:hover {
+a.contact-chip:hover {
     border-color: var(--color-accent);
     color: var(--color-accent);
     background: var(--color-accent-glow);
@@ -742,16 +742,6 @@ a:hover {
     color: var(--color-text-muted);
 }
 
-.cert-text {
-    font-size: 0.95rem;
-    color: var(--color-text-muted);
-    line-height: 1.7;
-    padding: 1rem;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-}
-
 /* ==========================================================================
    Footer
    ========================================================================== */
@@ -1041,7 +1031,7 @@ button:focus-visible {
         display: none;
     }
 
-    .skill-card, .timeline-content, .education-card, .lang-item, .cert-text {
+    .skill-card, .timeline-content, .education-card, .lang-item {
         background: #fff;
         border: 1px solid #ccc;
         box-shadow: none;
