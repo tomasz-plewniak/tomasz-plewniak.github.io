@@ -647,6 +647,111 @@ a.contact-chip:hover {
 }
 
 /* ==========================================================================
+   Projects / Selected Work
+   ========================================================================== */
+
+.project-grid {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.project-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    overflow: hidden;
+    transition: all var(--transition);
+}
+
+.js .project-card {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition);
+}
+
+.project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card:hover {
+    border-color: var(--color-border-hover);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    transform: translateY(-4px);
+}
+
+.project-card:hover::before {
+    transform: scaleX(1);
+}
+
+.project-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-accent);
+}
+
+.project-diagram svg {
+    width: 100%;
+    height: auto;
+}
+
+.project-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+}
+
+.project-context {
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+    margin: 0.15rem 0 1rem;
+}
+
+.project-fact {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+}
+
+.project-fact + .project-fact {
+    margin-top: 0.5rem;
+}
+
+.project-fact-label {
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-right: 0.35rem;
+}
+
+.project-card .tech-pills {
+    margin-top: 1rem;
+}
+
+/* ==========================================================================
    Education
    ========================================================================== */
 
@@ -880,6 +985,10 @@ a.contact-chip:hover {
         grid-template-columns: 1fr;
     }
 
+    .project-card {
+        grid-template-columns: 1fr;
+    }
+
     .extras-grid {
         grid-template-columns: 1fr;
     }
@@ -979,7 +1088,7 @@ a.contact-chip:hover {
         scroll-behavior: auto !important;
     }
 
-    .js .section, .js .timeline-item, .js .education-card, .js .skill-card {
+    .js .section, .js .timeline-item, .js .education-card, .js .skill-card, .js .project-card {
         opacity: 1;
         transform: none;
     }
@@ -1031,14 +1140,14 @@ button:focus-visible {
         display: none;
     }
 
-    .skill-card, .timeline-content, .education-card, .lang-item {
+    .skill-card, .timeline-content, .education-card, .lang-item, .project-card {
         background: #fff;
         border: 1px solid #ccc;
         box-shadow: none;
         break-inside: avoid;
     }
 
-    .js .section, .js .timeline-item, .js .education-card, .js .skill-card {
+    .js .section, .js .timeline-item, .js .education-card, .js .skill-card, .js .project-card {
         opacity: 1 !important;
         transform: none !important;
     }
